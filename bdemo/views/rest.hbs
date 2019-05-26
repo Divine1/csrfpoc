@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bdemo - Home</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="firstname" placeholder="firstname"/>
+        <button onclick="submit()">submit</button>
+        <input type="hidden" id="_csrf" value="{{csrfToken}}" />
+        <div>csrfToken <span style="color:orange" id="hiddencsrftoken">{{csrfToken}}</span></div>
+
+        <div>Output <span style="color:blue" id="output">none</span></div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+    var api= "http://localhost:3000";
+    var getcsrf=function(){
+        console.log("in getcsrf")
+        axios.get(api+"/csrf").then((res)=>{
+            console.log("response ",res.data.csrfToken)
+            document.getElementById("_csrf").value=res.data.csrfToken.trim();
+            document.getElementById("hiddencsrftoken").innerHTML=res.data.csrfToken.trim();            
+        }).catch((err)=>{
+            console.log("Err ",err)
+        })
+    }
+
+    var submit = function(){
+        console.log("in submit")
+        var firstname = document.getElementById("firstname").value;
+        var _csrf =document.getElementById("_csrf").value
+        console.log("_csrf ",_csrf)
+        var headers = {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': _csrf.trim()
+        }
+        var data = {"firstname":firstname,"_csrf" : _csrf.trim()}
+        axios.post(api+"/store",data,{headers:headers}).then((res)=>{
+            console.log("response ",res.data)
+            document.getElementById("output").innerHTML=res.data.data;
+        }).catch((err)=>{
+            console.log("Err ",err)
+        })
+    }
+    getcsrf();
+</script>
+</html>
