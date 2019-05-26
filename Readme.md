@@ -2,23 +2,23 @@
 
 ### Same server 192.0.1.1
 #### PageRedirect
-Success: frontend(192.0.1.1)  <---csrftoken--- backend(192.0.1.1)
+`Success`: frontend(192.0.1.1)  `<---csrftoken---` backend(192.0.1.1)
 
-Success: frontend(192.0.1.1)  ---csrftoken---> backend(192.0.1.1)
+`Success:` frontend(192.0.1.1)  `---csrftoken--->` backend(192.0.1.1)
 
 #### RestApi
-Success: frontend(192.0.1.1)  <---csrftoken--- backend(192.0.1.1)
+`Success:` frontend(192.0.1.1)  `<---csrftoken---` backend(192.0.1.1)
 
-Success: frontend(192.0.1.1)  ---csrftoken---> backend(192.0.1.1)
+`Success:` frontend(192.0.1.1)  `---csrftoken--->` backend(192.0.1.1)
 
 ### Different server 192.0.1.1,192.0.1.2
 #### PageRedirect
 Notpossible
 
 #### RestApi
-Success: frontend(192.0.1.2)  <---csrftoken--- backend(192.0.1.1)
+`Success:` frontend(192.0.1.2)  `<---csrftoken---` backend(192.0.1.1)
 
-Failure: frontend(192.0.1.2)  ---csrftoken---> backend(192.0.1.1)
+`Failure:` frontend(192.0.1.2)  `---csrftoken--->` backend(192.0.1.1)
     CSRF Token mismatch
 
 
