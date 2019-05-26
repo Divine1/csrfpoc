@@ -39,7 +39,7 @@ the observations written here are verfied with the project in this repo
 #### The solution i propose (for now...)
 - As of now, to make any public rest api's from IMserver to be accessible only from trusted public domains(3rd party),
     - You can ask the 3rd party to use csrf protection in their codebase and send the data to their server
-    - IM should give an accessToken to the 3rd party for identity verification. Using this accessToken the 3rd party can access the restApi's in the IM server from 3rd party's servercode, thereby IMserver will restrict access to only trusted 3rdparty's. This accessToken can be revoked by IM server if the 3rdparty goesaway or handles data without any security.
+    - IM should give an accessToken to the 3rd party for identity verification. Using this accessToken the 3rd party can access the restApi's in the IM server from 3rd party's servercode, thereby IMserver will restrict access to only trusted 3rdparty's. This accessToken for 3rdparty can be revoked in IM server if the 3rdparty goesaway or handles data without any security measures.
 
 
 
