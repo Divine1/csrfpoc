@@ -17,6 +17,7 @@ Notpossible
 
 #### RestApi
 Success: frontend(192.0.1.2)  <---csrftoken--- backend(192.0.1.1)
+
 Failure: frontend(192.0.1.2)  ---csrftoken---> backend(192.0.1.1)
     CSRF Token mismatch
 
